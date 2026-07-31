@@ -152,15 +152,15 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
 }
 /* número: +30 grande com gradiente + unidade "ANOS" pequena tracked */
 .hero-strip .item--solo .num{
-  display:flex;flex-direction:column;line-height:1;
+  display:inline-flex;align-items:flex-start;line-height:.86;
   font-size:clamp(2.6rem,6vw,3.5rem);font-weight:600;letter-spacing:-.035em;
   background:linear-gradient(180deg,#6fe9ab 6%,#35D07F 55%,#1c9c5e 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .hero-strip .item--solo .num em{
-  font-style:normal;font-size:.72rem;font-weight:600;letter-spacing:.34em;
+  font-style:normal;font-size:.7rem;font-weight:600;letter-spacing:.24em;
   text-transform:uppercase;color:var(--emerald);-webkit-text-fill-color:var(--emerald);
-  margin-top:9px;padding-left:.04em;
+  margin-left:7px;margin-top:.45em;
 }
 /* divisória fina de instrumento */
 .hero-strip .item--solo .lbl{
@@ -179,7 +179,7 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
   .hero-strip .item{border-right:0;margin-right:0;padding-right:24px;flex:0 0 46%}
   .hero-strip .item--solo{flex:0 0 auto;gap:18px;padding:15px 22px}
   .hero-strip .item--solo .num{font-size:clamp(2.2rem,10vw,2.9rem)}
-  .hero-strip .item--solo .lbl{font-size:.9rem;padding-left:19px;max-width:150px}
+  .hero-strip .item--solo .lbl{font-size:.88rem;padding-left:18px;max-width:170px}
 }
 /* leitura de estação: coordenadas reais da sede */
 .hero-coords{
@@ -226,13 +226,14 @@ section{scroll-margin-top:84px}
 .svc:hover::before{width:52px}
 .svc:hover{background:#f7fdf9;transform:translateY(-2px);box-shadow:0 12px 32px -10px rgba(53,208,127,.16)}
 .svc-ico{
-  width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-  background:var(--ink);color:var(--emerald);margin-bottom:24px;
-  transition:transform .22s ease,box-shadow .22s ease;
-  box-shadow:0 0 0 1px rgba(53,208,127,.18);
+  width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(130% 130% at 28% 18%,#17231d 0%,#0b0d0c 78%);
+  color:var(--emerald);margin-bottom:24px;
+  transition:transform .25s ease,box-shadow .25s ease;
+  box-shadow:0 0 0 1px rgba(53,208,127,.2),inset 0 1px 0 rgba(255,255,255,.05);
 }
-.svc:hover .svc-ico{transform:translateY(-3px);box-shadow:0 8px 22px -6px rgba(53,208,127,.3),0 0 0 1px rgba(53,208,127,.38)}
-.svc-ico svg{width:23px;height:23px}
+.svc:hover .svc-ico{transform:translateY(-3px);box-shadow:0 10px 26px -6px rgba(53,208,127,.34),0 0 0 1px rgba(53,208,127,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.svc-ico svg{width:26px;height:26px}
 .svc h3{font-size:1.14rem;margin-bottom:9px;font-weight:600;letter-spacing:-.015em}
 .svc p{font-size:.95rem;color:var(--text-muted);font-weight:300}
 .svc-idx{position:absolute;top:26px;right:30px;font-family:var(--font-display);font-size:1rem;color:var(--emerald);font-weight:600;letter-spacing:.04em;opacity:.7}
@@ -354,8 +355,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
   background:var(--emerald);box-shadow:0 0 12px rgba(53,208,127,.85);
 }
 /* carretel da trena ancorado no início — a fita desenrola de trás dele */
-.gauge .reel{position:absolute;top:0;left:0;width:30px;height:28px;z-index:2;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.55))}
+.gauge .reel{position:absolute;top:0;left:2px;width:34px;height:30px;z-index:2;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.6))}
 .gauge .reel svg{width:100%;height:100%;display:block}
 .gauge .reel .spool{transform-box:fill-box;transform-origin:center;will-change:transform}
 
@@ -382,14 +383,23 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
 <div class="gauge" aria-hidden="true">
   <i></i>
   <span class="reel">
-    <svg viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1.4" y="1.4" width="21.2" height="19" rx="6" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.5"/>
-      <g class="spool" stroke="#35D07F">
-        <circle cx="11" cy="11.5" r="5.6" stroke-width="1.2"/>
-        <path d="M11 5.9v11.2M5.4 11.5h11.2" stroke-width="0.8" stroke-opacity=".55"/>
+    <svg viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- fita (dupla linha) subindo do carretel até a barra de progresso -->
+      <path d="M21.6 8.8C25 6.7 27 4 27.7 1.4" stroke="#35D07F" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M23.9 10.4C27.2 8.3 29.2 5.6 29.9 3" stroke="#35D07F" stroke-width="1.5" stroke-linecap="round" stroke-opacity=".5"/>
+      <!-- carcaça da trena -->
+      <rect x="2" y="7" width="21" height="21" rx="7.5" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.6"/>
+      <!-- botão de trava (assinatura da trena) -->
+      <path d="M9.8 7V5.3A1.3 1.3 0 0 1 11.1 4h2.3A1.3 1.3 0 0 1 14.7 5.3V7" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.4"/>
+      <!-- clipe de cinto -->
+      <path d="M2.3 15v6.4" stroke="#35D07F" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".6"/>
+      <!-- rolo de fita enrolada (gira no scroll) -->
+      <g class="spool" fill="none">
+        <circle cx="12.4" cy="17.6" r="6.2" stroke="#35D07F" stroke-width="1.4"/>
+        <circle cx="12.4" cy="17.6" r="3.4" stroke="#35D07F" stroke-width="1.2" stroke-opacity=".6"/>
+        <path d="M12.4 11.4a6.2 6.2 0 0 1 5 2.3" stroke="#35D07F" stroke-width="1.6" stroke-linecap="round"/>
       </g>
-      <circle cx="11" cy="11.5" r="1.5" fill="#35D07F"/>
-      <rect x="7.8" y="19.4" width="6.4" height="3.6" rx="1.3" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.2"/>
+      <circle cx="12.4" cy="17.6" r="1.5" fill="#35D07F"/>
     </svg>
   </span>
 </div>
@@ -462,7 +472,7 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
     </div>
 
     <div class="hero-strip">
-      <div class="item item--solo"><span class="num">+30<em>anos</em></span><span class="lbl"><b>Experiência</b> em campo e em cartório</span></div>
+      <div class="item item--solo"><span class="num">+30<em>anos</em></span><span class="lbl"><b>Experiência</b> em campo e em escritório</span></div>
     </div>
     <div class="hero-coords">Lat 18°55′07″ S&ensp;·&ensp;Lon 48°16′38″ O&ensp;·&ensp;Alt 863 m</div>
   </div>
@@ -482,8 +492,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">01</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- estação total sobre tripé -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="3" width="7" height="4.6" rx="1"/><path d="M15.5 5.3h2.3"/><path d="M12 7.6v3.1"/><path d="M12 10.7 5.4 21M12 10.7 18.6 21M12 10.7v6.3"/></svg>
+          <!-- estação total sobre tripé (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7.8" y="2.6" width="8.4" height="5.4" rx="1.4" fill="#35D07F" fill-opacity=".18"/><rect x="7.8" y="2.6" width="8.4" height="5.4" rx="1.4"/><path d="M16.2 5.3h2.4"/><path d="M12 8v2.7"/><path d="M12 10.7 5.2 21M12 10.7 18.8 21M12 10.7V21"/><circle cx="12" cy="5.3" r="1" fill="currentColor" stroke="none"/></svg>
         </div>
         <h3>Levantamentos planialtimétricos</h3>
         <p>Medição de relevo, curvas de nível e edificações para projeto, execução ou perícia.</p>
@@ -492,8 +502,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">02</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- vértices de imóvel georreferenciado -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 7.5 12 4l7 3.2v8.6L11.5 20 5 16.6z"/><circle cx="5" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="7.7" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="16.3" r="1.5" fill="currentColor" stroke="none"/><circle cx="11.5" cy="20" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="16.6" r="1.5" fill="currentColor" stroke="none"/></svg>
+          <!-- imóvel georreferenciado — polígono com vértices (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 7.5 12 4l7 3.2v8.6L11.5 20 5 16.6z" fill="#35D07F" fill-opacity=".16"/><path d="M5 7.5 12 4l7 3.2v8.6L11.5 20 5 16.6z"/><circle cx="5" cy="7.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="7.7" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="16.3" r="1.6" fill="currentColor" stroke="none"/><circle cx="11.5" cy="20" r="1.6" fill="currentColor" stroke="none"/><circle cx="5" cy="16.6" r="1.6" fill="currentColor" stroke="none"/></svg>
         </div>
         <h3>Georreferenciamento rural</h3>
         <p>Demarcação de divisas e certificação de imóveis no SIGEF, junto ao INCRA.</p>
@@ -502,8 +512,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">03</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- matrícula com carimbo aprovado -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13.5l2 2 4-4.5"/></svg>
+          <!-- matrícula regularizada — documento com selo (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h7l5 5v13H6z" fill="#35D07F" fill-opacity=".16"/><path d="M6 3h7l5 5v13H6z"/><path d="M13 3v5h5"/><path d="M9 12h5.5M9 15.2h3.5"/><circle cx="15" cy="16.4" r="3" fill="#35D07F" fill-opacity=".22"/><path d="M13.6 16.4 14.6 17.4 16.5 15.3"/></svg>
         </div>
         <h3>Retificação e regularização</h3>
         <p>Correção de área, retificação de matrícula e regularização fundiária levadas ao cartório.</p>
@@ -512,8 +522,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">04</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- quadras e lotes -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.2"/><path d="M3 12h18M11 4v8M16 4v8M8 12v8M14 12v8"/></svg>
+          <!-- quadras e lotes — parcelamento do solo (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="1.6"/><rect x="3" y="4" width="8" height="8" fill="#35D07F" fill-opacity=".2" stroke="none"/><path d="M3 12h18M11 4v16M16 4v8M8 12v8M16 12v8"/></svg>
         </div>
         <h3>Loteamento e parcelamento</h3>
         <p>Projetos de loteamento e desmembramento do solo prontos para aprovação municipal.</p>
@@ -522,8 +532,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">05</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- edificação com visada de nível -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V9.5l6.5-4 5.5 3.4"/><path d="M9.5 21v-4.5h5V21"/><circle cx="17.5" cy="6.5" r="2.6"/><path d="M17.5 3.4v6.2M14.4 6.5h6.2"/></svg>
+          <!-- edificação com eixo de locação (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V9.6l7-4.2 7 4.2V21z" fill="#35D07F" fill-opacity=".16"/><path d="M3 21h18"/><path d="M5 21V9.6l7-4.2 7 4.2V21"/><path d="M9.5 21v-4.4h5V21"/><path d="M9.5 11.2h5M9.5 14h5"/></svg>
         </div>
         <h3>Topografia de obras civis</h3>
         <p>Locação de obra, controle de eixos e níveis, monitoramento de recalques e as-built.</p>
@@ -532,8 +542,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
       <article class="svc reveal">
         <span class="svc-idx">06</span>
         <div class="svc-ico" aria-hidden="true">
-          <!-- modelo digital de terreno (malha triangular) -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15l6.5-4.2 5 3 8.5-5.6"/><path d="M2 20l6.5-4.2 5 3 8.5-5.6"/><path d="M8.5 10.8v5M13.5 13.8v5"/></svg>
+          <!-- modelo digital de terreno — superfície 3D em camadas (duotone) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.8 9 5l5.5 2.6L21 4v6.2L14.5 14 9 11.4 3 15z" fill="#35D07F" fill-opacity=".16"/><path d="M3 8.8 9 5l5.5 2.6L21 4"/><path d="M3 13.4 9 9.6l5.5 2.6L21 8.6"/><path d="M3 18 9 14.2l5.5 2.6L21 13.2"/><path d="M9 5v9.2M14.5 7.6v9.2"/></svg>
         </div>
         <h3>Projetos em Civil 3D</h3>
         <p>Modelagem de terreno, greides e volumes de corte/aterro com pranchas técnicas.</p>
@@ -840,6 +850,10 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
         <a href="https://wa.me/5534997323133?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%20topografia." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.2-.8 1-.9 1.1-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.9 6.5c-.2-.5-.4-.5-.6-.5h-.6a1 1 0 0 0-.8.4A3.2 3.2 0 0 0 5.8 8.7c0 1.4 1 2.7 1.2 2.9s2 3.1 4.9 4.3c2.5 1 2.6.7 3 .7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
           WhatsApp · (34) 99732-3133
+        </a>
+        <a href="mailto:gjbrasiltopografia@yahoo.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+          gjbrasiltopografia@yahoo.com
         </a>
         <a href="https://instagram.com/gjbrasiltopografia" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
