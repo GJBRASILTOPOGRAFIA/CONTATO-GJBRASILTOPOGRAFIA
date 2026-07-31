@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&J Brasil Topografia — Levantamentos, Georreferenciamento e Topografia de Obras</title>
+<meta name="description" content="Topografia com rigor técnico em todo o Brasil: levantamentos planialtimétricos, georreferenciamento SIGEF/INCRA, regularização fundiária e topografia de obras civis.">
+<meta name="theme-color" content="#0b0d0c">
+
+<meta property="og:title" content="G&J Brasil Topografia">
+<meta property="og:description" content="Topografia de precisão em todo o Brasil — do georreferenciamento à obra civil.">
+<meta property="og:type" content="website">
+
+<style>
+/* ============================================================
+   G&J BRASIL TOPOGRAFIA — Landing de contato (arquivo único)
+   Paleta: preto · verde esmeralda · off-white
+   Direção: técnico, preciso e premium
+   ============================================================ */
+
+:root{
+  --emerald:#35D07F;
+  --emerald-deep:#1c9c5e;
+  --emerald-glow:rgba(53,208,127,.22);
+  --ink:#0b0d0c;
+  --ink-2:#111514;
+  --ink-soft:#151a18;
+  --hair-dark:#1e2623;
+  --paper:#fbfcfb;
+  --paper-2:#f2f5f3;
+  --text:#0e1211;
+  --text-muted:#5a655e;
+  --text-invert:#f4f7f5;
+  --text-invert-muted:#8f9d94;
+  --radius:18px;
+  --shadow:0 30px 70px -32px rgba(0,0,0,.5);
+  --maxw:1160px;
+  --font-display:"Space Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);color:var(--text);
+  line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em;font-weight:600}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--font-display);font-size:.74rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--emerald-deep);
+  display:inline-flex;align-items:center;gap:11px;
+}
+/* marco geodésico ⊕ no lugar do traço genérico */
+.eyebrow::before{
+  content:"";width:13px;height:13px;flex-shrink:0;border-radius:50%;
+  border:1px solid currentColor;opacity:.85;
+  background:
+    linear-gradient(currentColor,currentColor) center/1px 7px no-repeat,
+    linear-gradient(currentColor,currentColor) center/7px 1px no-repeat;
+}
+.eyebrow.on-dark{color:var(--emerald)}
+
+/* ============================ HEADER ============================ */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(11,13,12,.80);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--hair-dark);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
+/* >>> LOGO: usa logo-light.png (versão clara p/ fundo escuro) <<< */
+.brand img{height:52px;width:auto;display:block}
+.header-cta{
+  display:inline-flex;align-items:center;gap:9px;
+  background:transparent;color:var(--text-invert);
+  border:1px solid #2b3531;
+  font-family:var(--font-display);font-weight:500;font-size:.9rem;
+  padding:11px 18px;border-radius:999px;
+  transition:border-color .18s ease,color .18s ease;
+}
+.header-cta:hover{border-color:var(--emerald);color:var(--emerald)}
+.header-cta svg{width:17px;height:17px}
+@media(max-width:560px){.header-cta span{display:none}.header-cta{padding:11px}.brand img{height:42px}}
+
+/* ============================ HERO ============================ */
+.hero{
+  position:relative;color:var(--text-invert);
+  background:var(--ink) url(hero-bg.jpg) center/cover no-repeat;
+  padding:96px 0 104px;overflow:hidden;
+}
+.hero::after{ /* leitura do texto sobre a foto aérea */
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(100deg,rgba(11,13,12,.97) 0%,rgba(11,13,12,.9) 45%,rgba(11,17,13,.78) 100%),
+    linear-gradient(to top,var(--ink),transparent 34%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background-image:
+    linear-gradient(rgba(53,208,127,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(53,208,127,.05) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(125% 95% at 72% 5%,#000 28%,transparent 80%);
+  -webkit-mask-image:radial-gradient(125% 95% at 72% 5%,#000 28%,transparent 80%);
+}
+.hero-reticle{position:absolute;right:-96px;top:30px;width:440px;height:440px;opacity:.5;pointer-events:none;z-index:1}
+.compass-ring{transform-origin:200px 200px;animation:ringspin 160s linear infinite}
+@keyframes ringspin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.hero-reticle{width:270px;height:270px;right:-84px;top:auto;bottom:-64px;opacity:.3}}
+
+.hero-inner{position:relative;z-index:2;max-width:760px}
+.hero h1{font-size:clamp(2.3rem,6.2vw,3.9rem);margin:24px 0 20px;color:#fff;font-weight:600}
+.hero h1 .hl{color:var(--emerald)}
+.hero .sub{font-size:clamp(1.05rem,2.3vw,1.28rem);color:var(--text-invert-muted);max-width:590px;margin-bottom:38px;font-weight:300}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+
+.btn-wa{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--emerald);color:var(--ink);
+  font-family:var(--font-display);font-weight:600;font-size:1.02rem;
+  padding:17px 30px;border-radius:999px;
+  box-shadow:0 16px 38px -12px var(--emerald-glow);
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.btn-wa:hover{background:#fff;transform:translateY(-2px);box-shadow:0 22px 48px -14px var(--emerald-glow)}
+.btn-wa svg{width:22px;height:22px}
+.hero-note{font-size:.87rem;color:var(--text-invert-muted);display:inline-flex;align-items:center;gap:8px;font-weight:300}
+.hero-note svg{width:15px;height:15px;color:var(--emerald)}
+
+.hero-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:56px;padding-top:30px;border-top:1px solid var(--hair-dark)}
+.hero-strip .item{display:flex;flex-direction:column;gap:4px;padding-right:28px;margin-right:28px;border-right:1px solid var(--hair-dark)}
+.hero-strip .item:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-strip .num{font-family:var(--font-display);font-weight:600;font-size:1.35rem;color:#fff;letter-spacing:-.01em}
+.hero-strip .lbl{font-size:.8rem;color:var(--text-invert-muted);letter-spacing:.04em;font-weight:300}
+@media(max-width:600px){
+  .hero-strip{gap:20px 0}
+  .hero-strip .item{border-right:0;margin-right:0;padding-right:24px;flex:0 0 46%}
+}
+
+/* ============================ SEÇÕES ============================ */
+section{scroll-margin-top:84px}
+.section-pad{padding:100px 0}
+.section-head{max-width:660px;margin-bottom:52px}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:16px 0 14px;font-weight:600}
+.section-head p{color:var(--text-muted);font-size:1.08rem;font-weight:300}
+
+/* ---- Serviços ---- */
+.services{background:var(--paper);position:relative;overflow:hidden}
+.services .wrap{position:relative;z-index:1}
+/* curvas de nível — assinatura topográfica de fundo */
+.topo-lines{position:absolute;pointer-events:none;color:var(--emerald);font-family:var(--font-display)}
+.services .topo-lines{right:-150px;top:-90px;width:600px;height:600px;opacity:.15}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--paper-2);border:1px solid var(--paper-2);border-radius:var(--radius);overflow:hidden}
+@media(max-width:860px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.svc-grid{grid-template-columns:1fr}}
+.svc{position:relative;background:#fff;padding:38px 32px;transition:background .2s ease}
+.svc:hover{background:#fcfefd}
+.svc-ico{
+  width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--emerald);margin-bottom:22px;transition:transform .2s ease;
+}
+.svc:hover .svc-ico{transform:translateY(-3px)}
+.svc-ico svg{width:22px;height:22px}
+.svc h3{font-size:1.14rem;margin-bottom:9px;font-weight:600;letter-spacing:-.015em}
+.svc p{font-size:.95rem;color:var(--text-muted);font-weight:300}
+.svc-idx{position:absolute;top:26px;right:30px;font-family:var(--font-display);font-size:.78rem;color:#c9d3cd;font-weight:500;letter-spacing:.05em}
+
+/* ---- Diferenciais ---- */
+.why{background:var(--ink);color:var(--text-invert);position:relative;overflow:hidden}
+.why::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(53,208,127,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(53,208,127,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(100% 80% at 18% 0%,#000 18%,transparent 76%);
+  -webkit-mask-image:radial-gradient(100% 80% at 18% 0%,#000 18%,transparent 76%);
+}
+.why .section-head h2{color:#fff}
+.why .section-head p{color:var(--text-invert-muted)}
+.why-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2}
+@media(max-width:860px){.why-inner{grid-template-columns:1fr;gap:38px}}
+/* mosaico de campo — evidência real ao lado dos diferenciais */
+.why-photos{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:1fr 1fr;gap:14px}
+.why-photos figure{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--hair-dark);box-shadow:var(--shadow)}
+.why-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.wp-main{grid-row:1/3;aspect-ratio:4/5}
+.wp-main img{object-position:50% 68%}
+.why-photos figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,13,12,.55),transparent 45%)}
+.wp-sub .ph-chip{font-size:.58rem;left:14px;bottom:11px;letter-spacing:.14em}
+.ph-chip{position:absolute;left:18px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#dce8e1;font-weight:500}
+.ph-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--emerald)}
+.ph-tick{position:absolute;z-index:2;width:18px;height:18px;border:1px solid rgba(53,208,127,.55)}
+.ph-tick.tl{top:14px;left:14px;border-right:0;border-bottom:0}
+.ph-tick.br{bottom:14px;right:14px;border-left:0;border-top:0}
+.why-list{display:flex;flex-direction:column}
+.why-card{padding:28px 0;border-bottom:1px solid var(--hair-dark)}
+.why-card:first-child{padding-top:0}
+.why-card:last-child{border-bottom:0;padding-bottom:0}
+.why-num{font-family:var(--font-display);font-weight:600;color:var(--emerald);font-size:.82rem;letter-spacing:.14em;margin-bottom:18px}
+.why-card h3{font-size:1.28rem;margin-bottom:11px;color:#fff;font-weight:600}
+.why-card p{color:var(--text-invert-muted);font-size:.97rem;font-weight:300}
+
+/* ---- Atuação nacional ---- */
+.reach{background:var(--paper)}
+.reach-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+@media(max-width:860px){.reach-inner{grid-template-columns:1fr;gap:40px}}
+.reach-copy .lead{color:var(--text-muted);font-size:1.08rem;font-weight:300;margin-top:14px;max-width:460px}
+.reach-tags{list-style:none;margin-top:28px;display:flex;flex-wrap:wrap;gap:9px}
+.reach-tags li{
+  background:#fff;border:1px solid var(--paper-2);
+  padding:9px 16px;border-radius:999px;font-size:.88rem;font-weight:400;color:var(--text);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.reach-tags li svg{width:13px;height:13px;color:var(--emerald-deep)}
+/* painel do mapa */
+.reach-visual{
+  background:radial-gradient(120% 120% at 70% 10%, #16211c 0%, var(--ink) 62%);
+  border:1px solid var(--hair-dark);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  position:relative;padding:26px;
+}
+.reach-visual svg{width:100%;height:auto;display:block}
+.reach-hud{
+  position:absolute;top:20px;left:24px;z-index:3;
+  font-family:var(--font-display);font-size:.68rem;letter-spacing:.22em;
+  color:var(--text-invert-muted);text-transform:uppercase;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+}
+.reach-hud .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 0 var(--emerald-glow);animation:hud 2.4s ease-in-out infinite}
+@keyframes hud{0%,100%{box-shadow:0 0 0 0 rgba(53,208,127,.5)}50%{box-shadow:0 0 0 7px rgba(53,208,127,0)}}
+
+/* ---- CTA final ---- */
+.final-cta{position:relative;background:var(--ink-2);color:var(--text-invert);text-align:center;padding:96px 0;overflow:hidden}
+.final-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 50% 120%,rgba(53,208,127,.16),transparent 60%)}
+.final-cta .inner{position:relative;z-index:2}
+.final-cta h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:16px;color:#fff;font-weight:600}
+/* processo em 4 passos — reduz fricção no ponto de conversão */
+.cta-steps{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 30px;margin:26px auto 38px;max-width:760px;padding:0}
+.cta-steps li{display:inline-flex;align-items:center;gap:9px;font-size:.9rem;color:var(--text-invert-muted);font-weight:300}
+.cta-steps b{font-family:var(--font-display);color:var(--emerald);font-weight:600;font-size:.78rem;letter-spacing:.08em}
+
+/* ============================ RODAPÉ ============================ */
+footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:34px}
+.foot-brand{max-width:330px}
+.foot-brand img{height:48px;margin-bottom:18px}
+.foot-brand p{font-size:.9rem;line-height:1.75;font-weight:300}
+.foot-links{display:flex;flex-direction:column;gap:13px}
+.foot-links a{display:inline-flex;align-items:center;gap:10px;font-size:.95rem;color:var(--text-invert);transition:color .15s;font-weight:300}
+.foot-links a:hover{color:var(--emerald)}
+.foot-links svg{width:17px;height:17px;color:var(--emerald)}
+.foot-bottom{margin-top:44px;padding-top:24px;border-top:1px solid var(--hair-dark);font-size:.82rem;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-weight:300}
+
+/* ============================ CTA FLUTUANTE ============================ */
+.wa-float{
+  position:fixed;right:20px;bottom:20px;z-index:90;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;color:#fff;
+  box-shadow:0 16px 38px -10px rgba(0,0,0,.42);
+  transition:transform .18s ease;animation:wa-pulse 2.8s ease-in-out infinite;
+}
+.wa-float:hover{transform:translateY(-2px) scale(1.04)}
+.wa-float svg{width:28px;height:28px}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 16px 38px -10px rgba(0,0,0,.42),0 0 0 0 rgba(37,211,102,.42)}
+  50%{box-shadow:0 16px 38px -10px rgba(0,0,0,.42),0 0 0 15px rgba(37,211,102,0)}
+}
+@media(max-width:560px){.wa-float{right:15px;bottom:15px}}
+
+/* trena — progresso de leitura com graduação de fita métrica */
+.gauge{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none}
+.gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--emerald-deep),var(--emerald));position:relative}
+.gauge i::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 17px,rgba(11,13,12,.6) 17px 18px)}
+
+/* mira estadimétrica — detalhe de borda (somente telas largas) */
+.mira{display:none;position:absolute;right:40px;top:50%;transform:translateY(-50%);height:330px;width:15px;color:var(--emerald);opacity:.16;z-index:1}
+@media(min-width:1280px){.why .mira{display:block}}
+
+/* perfil longitudinal do terreno — fundo do fechamento */
+.cta-profile{position:absolute;left:0;bottom:0;width:100%;height:230px;pointer-events:none;z-index:0}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .wa-float,.reach-hud .dot,.compass-ring{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- trena de progresso de leitura -->
+<div class="gauge" aria-hidden="true"><i></i></div>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#topo" class="brand" aria-label="G&J Brasil Topografia — início">
+      <img src="logo-light.png" alt="G&J Brasil Topografia">
+    </a>
+    <a class="header-cta" href="https://instagram.com/gjbrasiltopografia" target="_blank" rel="noopener" aria-label="Instagram da G&J Brasil">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <span>@gjbrasiltopografia</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="topo">
+  <!-- limbo graduado de teodolito: ticks de 5° gerados matematicamente,
+       numeração de graus, cardeais N/L/S/O e agulha — o anel gira devagar
+       como o círculo horizontal de um instrumento em campo -->
+  <svg class="hero-reticle" viewBox="0 0 400 400" fill="none" aria-hidden="true" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif">
+    <g class="compass-ring" stroke="#35D07F">
+      <path stroke-width=".7" stroke-opacity=".5" d="M215.7 20.7L216.2 14.7M231.3 22.7L232.3 16.8M261.6 30.9L263.6 25.2M276.1 36.9L278.6 31.4M303.2 52.6L306.7 47.6M315.7 62.1L319.6 57.5M337.9 84.3L342.5 80.4M347.4 96.8L352.4 93.3M363.1 123.9L368.6 121.4M369.1 138.4L374.8 136.4M377.3 168.7L383.2 167.7M379.3 184.3L385.3 183.8M379.3 215.7L385.3 216.2M377.3 231.3L383.2 232.3M369.1 261.6L374.8 263.6M363.1 276.1L368.6 278.6M347.4 303.2L352.4 306.7M337.9 315.7L342.5 319.6M315.7 337.9L319.6 342.5M303.2 347.4L306.7 352.4M276.1 363.1L278.6 368.6M261.6 369.1L263.6 374.8M231.3 377.3L232.3 383.2M215.7 379.3L216.2 385.3M184.3 379.3L183.8 385.3M168.7 377.3L167.7 383.2M138.4 369.1L136.4 374.8M123.9 363.1L121.4 368.6M96.8 347.4L93.3 352.4M84.3 337.9L80.4 342.5M62.1 315.7L57.5 319.6M52.6 303.2L47.6 306.7M36.9 276.1L31.4 278.6M30.9 261.6L25.2 263.6M22.7 231.3L16.8 232.3M20.7 215.7L14.7 216.2M20.7 184.3L14.7 183.8M22.7 168.7L16.8 167.7M30.9 138.4L25.2 136.4M36.9 123.9L31.4 121.4M52.6 96.8L47.6 93.3M62.1 84.3L57.5 80.4M84.3 62.1L80.4 57.5M96.8 52.6L93.3 47.6M123.9 36.9L121.4 31.4M138.4 30.9L136.4 25.2M168.7 22.7L167.7 16.8M184.3 20.7L183.8 14.7"/>
+      <path stroke-width="1" stroke-opacity=".75" d="M245.3 31.0L248.1 20.3M287.5 48.4L293.0 38.9M323.7 76.3L331.5 68.5M351.6 112.5L361.1 107.0M369.0 154.7L379.7 151.9M369.0 245.3L379.7 248.1M351.6 287.5L361.1 293.0M323.7 323.7L331.5 331.5M287.5 351.6L293.0 361.1M245.3 369.0L248.1 379.7M154.7 369.0L151.9 379.7M112.5 351.6L107.0 361.1M76.3 323.7L68.5 331.5M48.4 287.5L38.9 293.0M31.0 245.3L20.3 248.1M31.0 154.7L20.3 151.9M48.4 112.5L38.9 107.0M76.3 76.3L68.5 68.5M112.5 48.4L107.0 38.9M154.7 31.0L151.9 20.3"/>
+    </g>
+    <path stroke="#35D07F" stroke-width="1.4" stroke-opacity=".85" d="M200.0 30.0L200.0 14.0M370.0 200.0L386.0 200.0M200.0 370.0L200.0 386.0M30.0 200.0L14.0 200.0"/>
+    <circle cx="200" cy="200" r="192" stroke="#35D07F" stroke-width=".8" stroke-opacity=".45"/>
+    <circle cx="200" cy="200" r="120" stroke="#35D07F" stroke-width=".7" stroke-opacity=".4" stroke-dasharray="2 7"/>
+    <circle cx="200" cy="200" r="66" stroke="#35D07F" stroke-width=".7" stroke-opacity=".5"/>
+    <line x1="200" y1="142" x2="200" y2="258" stroke="#35D07F" stroke-width=".5" stroke-opacity=".4"/>
+    <line x1="142" y1="200" x2="258" y2="200" stroke="#35D07F" stroke-width=".5" stroke-opacity=".4"/>
+    <g fill="#35D07F" fill-opacity=".5" font-size="10" letter-spacing=".05em">
+      <text x="278.5" y="67.0" text-anchor="middle">30</text>
+      <text x="336.0" y="124.5" text-anchor="middle">60</text>
+      <text x="336.0" y="281.5" text-anchor="middle">120</text>
+      <text x="278.5" y="339.0" text-anchor="middle">150</text>
+      <text x="121.5" y="339.0" text-anchor="middle">210</text>
+      <text x="64.0" y="281.5" text-anchor="middle">240</text>
+      <text x="64.0" y="124.5" text-anchor="middle">300</text>
+      <text x="121.5" y="67.0" text-anchor="middle">330</text>
+    </g>
+    <g fill="#35D07F" font-size="14" font-weight="600" fill-opacity=".9">
+      <text x="200.0" y="50.0" text-anchor="middle">N</text>
+      <text x="354.0" y="204.5" text-anchor="middle">L</text>
+      <text x="200.0" y="359.0" text-anchor="middle">S</text>
+      <text x="46.0" y="204.5" text-anchor="middle">O</text>
+    </g>
+    <polygon points="200,104 206,200 194,200" fill="#35D07F" fill-opacity=".8"/>
+    <polygon points="200,296 194,200 206,200" fill="#35D07F" fill-opacity=".16"/>
+    <circle cx="200" cy="200" r="5.5" stroke="#35D07F" stroke-width="1.2"/>
+    <circle cx="200" cy="200" r="1.8" fill="#35D07F"/>
+  </svg>
+
+  <div class="wrap hero-inner reveal">
+    <span class="eyebrow on-dark">Topografia · Georreferenciamento · Obras civis</span>
+    <h1>Precisão que <span class="hl">regulariza</span> e valoriza o seu patrimônio.</h1>
+    <p class="sub">Do campo ao registro: levantamentos topográficos, georreferenciamento SIGEF/INCRA e controle de obras com rigor técnico e prazo cumprido.</p>
+
+    <div class="hero-actions">
+      <a class="btn-wa" href="https://wa.me/5534997323133?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%20topografia." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.2-.8 1-.9 1.1-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.9 6.5c-.2-.5-.4-.5-.6-.5h-.6a1 1 0 0 0-.8.4A3.2 3.2 0 0 0 5.8 8.7c0 1.4 1 2.7 1.2 2.9s2 3.1 4.9 4.3c2.5 1 2.6.7 3 .7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        Solicitar orçamento
+      </a>
+      <span class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Retorno rápido · sem compromisso
+      </span>
+    </div>
+
+    <div class="hero-strip">
+      <div class="item"><span class="num">+30 anos</span><span class="lbl">de topografia</span></div>
+      <div class="item"><span class="num">SIGEF / INCRA</span><span class="lbl">Certificação de imóveis</span></div>
+      <div class="item"><span class="num">GNSS · RTK</span><span class="lbl">Medição geodésica</span></div>
+      <div class="item"><span class="num">ART · RT</span><span class="lbl">Responsabilidade técnica</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVIÇOS ============================ -->
+<section class="services section-pad" id="servicos">
+  <!-- curvas de nível: equidistância 5 m, curva-mestra mais grossa,
+       intermediária tracejada e cota do topo △ 863,2 (altitude de Uberlândia) -->
+  <svg class="topo-lines" viewBox="0 0 640 620" fill="none" stroke="currentColor" aria-hidden="true">
+    <path stroke-width=".8" d="M318 58C438 40 548 110 572 232C596 354 516 480 390 526C264 572 126 530 82 414C38 298 78 170 184 106C240 72 270 65 318 58Z"/>
+    <path stroke-width=".8" d="M320 106C414 90 508 152 524 250C540 348 476 444 372 478C268 512 160 476 128 384C96 292 130 194 212 144C256 118 284 112 320 106Z"/>
+    <path stroke-width="1.5" d="M324 154C400 142 464 194 474 266C484 338 434 404 354 430C274 456 196 426 172 352C148 278 178 210 242 172C274 154 296 158 324 154Z"/>
+    <path stroke-width=".8" stroke-dasharray="5 5" d="M328 202C384 194 424 232 428 284C432 336 396 380 336 396C276 412 220 388 204 336C188 284 210 240 258 214C284 200 304 206 328 202Z"/>
+    <path stroke-width=".8" d="M332 250C368 246 394 270 396 306C398 342 372 368 332 374C292 380 258 360 252 322C246 284 264 262 294 254C308 250 320 252 332 250Z"/>
+    <path stroke-width="1.1" d="M334 296C352 294 366 306 366 320C366 334 354 344 336 346C318 348 302 340 300 324C298 308 312 299 322 297C326 296 330 296 334 296Z"/>
+    <g stroke="none" fill="currentColor" font-size="10" letter-spacing=".06em">
+      <text x="548" y="226">845</text>
+      <text x="500" y="248">850</text>
+      <text x="452" y="270">855</text>
+      <text x="404" y="292">860</text>
+      <text x="304" y="327">△ 863,2</text>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Serviços</span>
+      <h2>Soluções completas em topografia</h2>
+      <p>Seis frentes de trabalho — do meio rural à infraestrutura urbana.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="svc-idx">01</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+        <h3>Levantamentos planialtimétricos</h3>
+        <p>Medição de relevo, curvas de nível e edificações para projeto, execução ou perícia.</p>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-idx">02</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/></svg></div>
+        <h3>Georreferenciamento rural</h3>
+        <p>Demarcação e certificação de imóveis rurais junto ao INCRA.</p>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-idx">03</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg></div>
+        <h3>Retificação e regularização</h3>
+        <p>Correção de área, retificação de matrícula e regularização fundiária levadas ao cartório.</p>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-idx">04</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Loteamento e parcelamento</h3>
+        <p>Projetos de loteamento e desmembramento do solo prontos para aprovação municipal.</p>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-idx">05</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Topografia de obras civis</h3>
+        <p>Locação de obra, controle de eixos e níveis, monitoramento de recalques e as-built.</p>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-idx">06</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12h4l3 8 6-16 3 8h4"/></svg></div>
+        <h3>Projetos em Civil 3D</h3>
+        <p>Modelagem de terreno, greides e volumes de corte/aterro com pranchas técnicas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ POR QUE A G&J ============================ -->
+<section class="why section-pad" id="diferenciais">
+  <!-- graduação de mira estadimétrica (padrão "E" das réguas de nivelamento) -->
+  <svg class="mira" viewBox="0 0 20 440" fill="currentColor" aria-hidden="true">
+    <defs>
+      <pattern id="miraE" width="20" height="40" patternUnits="userSpaceOnUse">
+        <path d="M0 0h14v4H4v4h10v4H4v4h10v4H0z"/>
+        <path d="M20 20H6v4h10v4H6v4h10v4H6v4h14z"/>
+      </pattern>
+    </defs>
+    <rect width="20" height="440" fill="url(#miraE)"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow on-dark">Por que a G&amp;J</span>
+      <h2>O padrão técnico que a sua documentação exige</h2>
+      <p>Uma equipe que domina a medição e a burocracia — e entrega as duas resolvidas.</p>
+    </div>
+
+    <div class="why-inner">
+      <div class="why-photos reveal">
+        <figure class="wp-main">
+          <img src="foto-campo.jpg" alt="Topógrafo da G&J Brasil operando estação total em levantamento de campo" loading="lazy">
+          <span class="ph-tick tl" aria-hidden="true"></span>
+          <span class="ph-tick br" aria-hidden="true"></span>
+          <figcaption class="ph-chip">Levantamento em campo</figcaption>
+        </figure>
+        <figure class="wp-sub">
+          <img src="obra-2.jpg" alt="Topógrafo com receptor GNSS em planta industrial" loading="lazy">
+          <figcaption class="ph-chip">Planta industrial</figcaption>
+        </figure>
+        <figure class="wp-sub">
+          <img src="obra-3.jpg" alt="Estação total sobre tripé em canteiro de obras" loading="lazy">
+          <figcaption class="ph-chip">Locação de obra</figcaption>
+        </figure>
+      </div>
+
+      <div class="why-list">
+        <div class="why-card reveal">
+          <div class="why-num">01 — PRECISÃO</div>
+          <h3>Dados que passam na validação</h3>
+          <p>GNSS RTK e estação total — dados que o SIGEF e o cartório aceitam de primeira.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">02 — PRAZO</div>
+          <h3>Cronograma que se cumpre</h3>
+          <p>Etapas e datas definidas no início e respeitadas do começo ao fim, sem surpresas.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">03 — CONFORMIDADE</div>
+          <h3>Regularidade garantida</h3>
+          <p>Responsável técnico e ART, em conformidade com INCRA, cartórios e prefeituras.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ ATUAÇÃO NACIONAL ============================ -->
+<section class="reach section-pad" id="atuacao">
+  <div class="wrap reach-inner">
+    <div class="reach-copy reveal">
+      <span class="eyebrow">Onde atuamos</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin:16px 0 0;font-weight:600">Atuação em todo o Brasil</h2>
+      <p class="lead">Sede em Uberlândia e equipes em deslocamento para qualquer estado — da fazenda ao grande empreendimento urbano.</p>
+      <ul class="reach-tags">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Proprietários rurais</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Incorporadoras</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Construtoras</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Advogados &amp; cartórios</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Prefeituras &amp; órgãos públicos</li>
+      </ul>
+    </div>
+
+    <!-- MAPA DO BRASIL — gerado a partir de dados geográficos reais (GeoJSON),
+         matriz de pontos point-in-polygon, capitais em posição geográfica exata
+         e graticule verdadeiro (70°–40°O / 0°–30°S). Rede parte da sede: Uberlândia/MG. -->
+    <div class="reach-visual reveal" role="img" aria-label="Mapa do Brasil em matriz de pontos com a rede de atendimento partindo da sede em Uberlândia">
+      <span class="reach-hud"><span class="dot"></span>18°55′S · 48°17′O — Sede</span>
+      <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif">
+        <defs>
+          <radialGradient id="node" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7ff0b4"/>
+            <stop offset="100%" stop-color="#35D07F"/>
+          </radialGradient>
+          <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#35D07F" stop-opacity=".20"/>
+            <stop offset="100%" stop-color="#35D07F" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- graticule real: meridianos 70°–40°O e paralelos 0°–30°S -->
+        <g stroke="#35D07F" stroke-opacity=".09" stroke-width=".8">
+          <line x1="78.4" y1="24" x2="78.4" y2="446"/>
+          <line x1="175.5" y1="24" x2="175.5" y2="446"/>
+          <line x1="272.6" y1="24" x2="272.6" y2="446"/>
+          <line x1="369.7" y1="24" x2="369.7" y2="446"/>
+          <line x1="14" y1="86.9" x2="440" y2="86.9"/>
+          <line x1="14" y1="187.4" x2="440" y2="187.4"/>
+          <line x1="14" y1="287.9" x2="440" y2="287.9"/>
+          <line x1="14" y1="388.4" x2="440" y2="388.4"/>
+        </g>
+        <g fill="#8f9d94" fill-opacity=".6" font-size="8.5" letter-spacing=".08em">
+          <text x="175.5" y="16" text-anchor="middle">60°O</text>
+          <text x="272.6" y="16" text-anchor="middle">50°O</text>
+          <text x="369.7" y="16" text-anchor="middle">40°O</text>
+          <text x="452" y="89.5" text-anchor="end">0°</text>
+          <text x="452" y="190" text-anchor="end">10°S</text>
+          <text x="452" y="290.5" text-anchor="end">20°S</text>
+          <text x="452" y="391" text-anchor="end">30°S</text>
+        </g>
+
+        <!-- glow sob a sede -->
+        <circle cx="289" cy="276.8" r="72" fill="url(#hubGlow)"/>
+
+        <!-- matriz de pontos do território (690 pontos, point-in-polygon) -->
+        <path d="M138 48h.01M148 48h.01M158 48h.01M168 48h.01M178 48h.01M258 48h.01M138 58h.01M148 58h.01M158 58h.01M168 58h.01M258 58h.01M138 68h.01M148 68h.01M158 68h.01M168 68h.01M178 68h.01M208 68h.01M218 68h.01M228 68h.01M238 68h.01M248 68h.01M258 68h.01M268 68h.01M88 78h.01M98 78h.01M108 78h.01M128 78h.01M138 78h.01M148 78h.01M158 78h.01M168 78h.01M178 78h.01M188 78h.01M198 78h.01M208 78h.01M218 78h.01M228 78h.01M238 78h.01M248 78h.01M258 78h.01M268 78h.01M78 88h.01M88 88h.01M98 88h.01M108 88h.01M118 88h.01M128 88h.01M138 88h.01M148 88h.01M158 88h.01M168 88h.01M178 88h.01M188 88h.01M198 88h.01M208 88h.01M218 88h.01M228 88h.01M238 88h.01M248 88h.01M258 88h.01M268 88h.01M88 98h.01M98 98h.01M108 98h.01M118 98h.01M128 98h.01M138 98h.01M148 98h.01M158 98h.01M168 98h.01M178 98h.01M188 98h.01M198 98h.01M208 98h.01M218 98h.01M228 98h.01M238 98h.01M248 98h.01M258 98h.01M268 98h.01M278 98h.01M288 98h.01M298 98h.01M308 98h.01M88 108h.01M98 108h.01M108 108h.01M118 108h.01M128 108h.01M138 108h.01M148 108h.01M158 108h.01M168 108h.01M178 108h.01M188 108h.01M198 108h.01M208 108h.01M218 108h.01M228 108h.01M238 108h.01M248 108h.01M258 108h.01M268 108h.01M278 108h.01M288 108h.01M298 108h.01M308 108h.01M318 108h.01M88 118h.01M98 118h.01M108 118h.01M118 118h.01M128 118h.01M138 118h.01M148 118h.01M158 118h.01M168 118h.01M178 118h.01M188 118h.01M198 118h.01M208 118h.01M218 118h.01M228 118h.01M238 118h.01M248 118h.01M258 118h.01M268 118h.01M278 118h.01M288 118h.01M298 118h.01M308 118h.01M318 118h.01M328 118h.01M338 118h.01M348 118h.01M358 118h.01M368 118h.01M88 128h.01M98 128h.01M108 128h.01M118 128h.01M128 128h.01M138 128h.01M148 128h.01M158 128h.01M168 128h.01M178 128h.01M188 128h.01M198 128h.01M208 128h.01M218 128h.01M228 128h.01M238 128h.01M248 128h.01M258 128h.01M268 128h.01M278 128h.01M288 128h.01M298 128h.01M308 128h.01M318 128h.01M328 128h.01M338 128h.01M348 128h.01M358 128h.01M368 128h.01M378 128h.01M388 128h.01M58 138h.01M68 138h.01M78 138h.01M88 138h.01M98 138h.01M108 138h.01M118 138h.01M128 138h.01M138 138h.01M148 138h.01M158 138h.01M168 138h.01M178 138h.01M188 138h.01M198 138h.01M208 138h.01M218 138h.01M228 138h.01M238 138h.01M248 138h.01M258 138h.01M268 138h.01M278 138h.01M288 138h.01M298 138h.01M308 138h.01M318 138h.01M328 138h.01M338 138h.01M348 138h.01M358 138h.01M368 138h.01M378 138h.01M388 138h.01M398 138h.01M48 148h.01M58 148h.01M68 148h.01M78 148h.01M88 148h.01M98 148h.01M108 148h.01M118 148h.01M128 148h.01M138 148h.01M148 148h.01M158 148h.01M168 148h.01M178 148h.01M188 148h.01M198 148h.01M208 148h.01M218 148h.01M228 148h.01M238 148h.01M248 148h.01M258 148h.01M268 148h.01M278 148h.01M288 148h.01M298 148h.01M308 148h.01M318 148h.01M328 148h.01M338 148h.01M348 148h.01M358 148h.01M368 148h.01M378 148h.01M388 148h.01M398 148h.01M408 148h.01M48 158h.01M58 158h.01M68 158h.01M78 158h.01M88 158h.01M98 158h.01M108 158h.01M118 158h.01M128 158h.01M138 158h.01M148 158h.01M158 158h.01M168 158h.01M178 158h.01M188 158h.01M198 158h.01M208 158h.01M218 158h.01M228 158h.01M238 158h.01M248 158h.01M258 158h.01M268 158h.01M278 158h.01M288 158h.01M298 158h.01M308 158h.01M318 158h.01M328 158h.01M338 158h.01M348 158h.01M358 158h.01M368 158h.01M378 158h.01M388 158h.01M398 158h.01M408 158h.01M418 158h.01M48 168h.01M58 168h.01M68 168h.01M78 168h.01M88 168h.01M98 168h.01M108 168h.01M118 168h.01M128 168h.01M138 168h.01M148 168h.01M158 168h.01M168 168h.01M178 168h.01M188 168h.01M198 168h.01M208 168h.01M218 168h.01M228 168h.01M238 168h.01M248 168h.01M258 168h.01M268 168h.01M278 168h.01M288 168h.01M298 168h.01M308 168h.01M318 168h.01M328 168h.01M338 168h.01M348 168h.01M358 168h.01M368 168h.01M378 168h.01M388 168h.01M398 168h.01M408 168h.01M418 168h.01M58 178h.01M68 178h.01M78 178h.01M88 178h.01M98 178h.01M108 178h.01M118 178h.01M128 178h.01M138 178h.01M148 178h.01M158 178h.01M168 178h.01M178 178h.01M188 178h.01M198 178h.01M208 178h.01M218 178h.01M228 178h.01M238 178h.01M248 178h.01M258 178h.01M268 178h.01M278 178h.01M288 178h.01M298 178h.01M308 178h.01M318 178h.01M328 178h.01M338 178h.01M348 178h.01M358 178h.01M368 178h.01M378 178h.01M388 178h.01M398 178h.01M408 178h.01M78 188h.01M88 188h.01M98 188h.01M108 188h.01M128 188h.01M138 188h.01M148 188h.01M158 188h.01M168 188h.01M178 188h.01M188 188h.01M198 188h.01M208 188h.01M218 188h.01M228 188h.01M238 188h.01M248 188h.01M258 188h.01M268 188h.01M278 188h.01M288 188h.01M298 188h.01M308 188h.01M318 188h.01M328 188h.01M338 188h.01M348 188h.01M358 188h.01M368 188h.01M378 188h.01M388 188h.01M398 188h.01M78 198h.01M128 198h.01M138 198h.01M148 198h.01M158 198h.01M168 198h.01M178 198h.01M188 198h.01M198 198h.01M208 198h.01M218 198h.01M228 198h.01M238 198h.01M248 198h.01M258 198h.01M268 198h.01M278 198h.01M288 198h.01M298 198h.01M308 198h.01M318 198h.01M328 198h.01M338 198h.01M348 198h.01M358 198h.01M368 198h.01M378 198h.01M388 198h.01M138 208h.01M148 208h.01M158 208h.01M168 208h.01M178 208h.01M188 208h.01M198 208h.01M208 208h.01M218 208h.01M228 208h.01M238 208h.01M248 208h.01M258 208h.01M268 208h.01M278 208h.01M288 208h.01M298 208h.01M308 208h.01M318 208h.01M328 208h.01M338 208h.01M348 208h.01M358 208h.01M368 208h.01M378 208h.01M388 208h.01M158 218h.01M168 218h.01M178 218h.01M188 218h.01M198 218h.01M208 218h.01M218 218h.01M228 218h.01M238 218h.01M248 218h.01M258 218h.01M268 218h.01M278 218h.01M288 218h.01M298 218h.01M308 218h.01M318 218h.01M328 218h.01M338 218h.01M348 218h.01M358 218h.01M368 218h.01M378 218h.01M178 228h.01M188 228h.01M198 228h.01M208 228h.01M218 228h.01M228 228h.01M238 228h.01M248 228h.01M258 228h.01M268 228h.01M278 228h.01M288 228h.01M298 228h.01M308 228h.01M318 228h.01M328 228h.01M338 228h.01M348 228h.01M358 228h.01M368 228h.01M378 228h.01M178 238h.01M188 238h.01M198 238h.01M208 238h.01M218 238h.01M228 238h.01M238 238h.01M248 238h.01M258 238h.01M268 238h.01M278 238h.01M288 238h.01M298 238h.01M308 238h.01M318 238h.01M328 238h.01M338 238h.01M348 238h.01M358 238h.01M368 238h.01M378 238h.01M178 248h.01M188 248h.01M198 248h.01M208 248h.01M218 248h.01M228 248h.01M238 248h.01M248 248h.01M258 248h.01M268 248h.01M278 248h.01M288 248h.01M298 248h.01M308 248h.01M318 248h.01M328 248h.01M338 248h.01M348 248h.01M358 248h.01M368 248h.01M378 248h.01M198 258h.01M208 258h.01M218 258h.01M228 258h.01M238 258h.01M248 258h.01M258 258h.01M268 258h.01M278 258h.01M288 258h.01M298 258h.01M308 258h.01M318 258h.01M328 258h.01M338 258h.01M348 258h.01M358 258h.01M368 258h.01M208 268h.01M218 268h.01M228 268h.01M238 268h.01M248 268h.01M258 268h.01M268 268h.01M278 268h.01M288 268h.01M298 268h.01M308 268h.01M318 268h.01M328 268h.01M338 268h.01M348 268h.01M358 268h.01M368 268h.01M198 278h.01M208 278h.01M218 278h.01M228 278h.01M238 278h.01M248 278h.01M258 278h.01M268 278h.01M278 278h.01M288 278h.01M298 278h.01M308 278h.01M318 278h.01M328 278h.01M338 278h.01M348 278h.01M358 278h.01M368 278h.01M198 288h.01M208 288h.01M218 288h.01M228 288h.01M238 288h.01M248 288h.01M258 288h.01M268 288h.01M278 288h.01M288 288h.01M298 288h.01M308 288h.01M318 288h.01M328 288h.01M338 288h.01M348 288h.01M358 288h.01M368 288h.01M198 298h.01M208 298h.01M218 298h.01M228 298h.01M238 298h.01M248 298h.01M258 298h.01M268 298h.01M278 298h.01M288 298h.01M298 298h.01M308 298h.01M318 298h.01M328 298h.01M338 298h.01M348 298h.01M358 298h.01M198 308h.01M208 308h.01M218 308h.01M228 308h.01M238 308h.01M248 308h.01M258 308h.01M268 308h.01M278 308h.01M288 308h.01M298 308h.01M308 308h.01M318 308h.01M328 308h.01M338 308h.01M348 308h.01M358 308h.01M228 318h.01M238 318h.01M248 318h.01M258 318h.01M268 318h.01M278 318h.01M288 318h.01M298 318h.01M308 318h.01M318 318h.01M328 318h.01M238 328h.01M248 328h.01M258 328h.01M268 328h.01M278 328h.01M288 328h.01M298 328h.01M308 328h.01M238 338h.01M248 338h.01M258 338h.01M268 338h.01M278 338h.01M288 338h.01M238 348h.01M248 348h.01M258 348h.01M268 348h.01M278 348h.01M238 358h.01M248 358h.01M258 358h.01M268 358h.01M278 358h.01M228 368h.01M238 368h.01M248 368h.01M258 368h.01M268 368h.01M278 368h.01M218 378h.01M228 378h.01M238 378h.01M248 378h.01M258 378h.01M268 378h.01M278 378h.01M208 388h.01M218 388h.01M228 388h.01M238 388h.01M248 388h.01M258 388h.01M268 388h.01M228 398h.01M238 398h.01M248 398h.01M258 398h.01M238 408h.01M248 408h.01"
+              stroke="#35D07F" stroke-opacity=".30" stroke-width="2.4" stroke-linecap="round"/>
+
+        <!-- contorno geográfico real (203 vértices) -->
+        <path d="M198.3 390.3L211.2 376.6L222.2 366.9L228.7 362.8L236.9 357.2L237.1 349.2L232.2 343.4L227.4 345.3L229.3 339.5L230.6 333.6L230.6 328.1L227.1 326.2L223.5 327.9L219.9 327.4L218.8 323.5L217.8 314.3L216 311.3L209.5 308.6L205.5 310.6L195.3 308.7L195.9 295L193 289.4L196.1 287.4L195.1 281.6L197.8 277.2L199.5 269.3L197.2 263.1L191.9 260.2L190.9 256.3L192.3 250.5L173.7 250.1L170 238.4L172.8 238.2L172.7 233.9L170.8 230.9L170.4 225.1L164.7 222.1L158.6 222.2L154.6 219.3L148 217.3L144.2 213.6L133.4 211.9L122.8 202.9L123.6 196.2L122.4 192.3L123.4 184.8L110.7 186.5L105.6 190.3L97.1 194.3L95 197.4L90 197.6L82.8 196.7L77.3 198.5L72.9 197.3L73.5 182.1L65.6 188L57 187.7L53.3 182.4L46.9 181.8L48.9 177.5L43.5 171.3L39.5 162.3L42.1 160.5L42 156.2L47.9 153.3L46.9 147.9L49.4 144.4L50.1 139.7L61.2 132.9L69.2 130.9L70.5 129.4L79.2 129.9L83.6 102.3L83.8 98L82.3 92.2L78 88.6L78 81.3L83.5 79.6L85.4 80.6L85.8 76.8L80.1 75.8L80 69.5L98.9 69.7L102.1 66.2L104.8 69.4L106.7 75.3L108.5 74.1L113.9 79.4L121.4 78.8L123.3 75.7L130.5 73.3L134.5 71.7L135.6 67.4L142.6 64.6L142 62.5L133.8 61.6L132.5 55.3L132.8 48.5L128.5 45.9L130.3 45L137.5 46.3L145.2 48.8L148 46.4L155 44.9L165.9 41.1L169.4 37.3L168.1 34.4L173.2 34L175.4 36.3L174.2 40.7L177.5 42.2L179.7 46.9L177 50.5L175.5 59L178 64.1L178.7 68.7L184.7 73.5L189.4 74L190.5 72L193.6 71.6L197.9 69.8L201.1 67.1L206.5 68L208.8 67.6L214.1 68.4L215 66.4L213.4 64.4L214.3 61.5L218.2 62.4L222.8 61.3L228.4 63.5L232.6 65.5L235.6 62.8L237.8 63.2L239.1 66.1L243.8 65.3L247.5 61.5L250.5 54.1L256.2 44.9L259.5 44.5L261.9 50L267.4 67.6L272.6 69.2L272.8 76.2L265.5 84.5L268.5 87.5L285.7 89.1L286 99.1L293.4 92.5L305.6 96.2L321.7 102.3L326.5 108.2L324.9 113.7L336.2 110.6L355.1 116L369.6 115.6L383.9 123.9L396.3 135.1L403.8 138L412.1 138.4L415.6 141.6L418.9 154.4L420.5 160.5L416.6 177.1L411.7 183.7L398 197.6L391.8 209L384.7 217.7L382.2 217.9L379.5 225.3L380.2 244.1L377.5 259.6L376.5 266.2L373.4 270.2L371.7 283.6L361.8 296.7L360.2 307.1L352.3 311.5L350.1 317.5L339.5 317.5L324.2 321.3L317.4 325.8L306.5 328.7L295.1 336.7L286.9 346.7L285.5 354.2L287.1 359.8L285.3 369.9L283.1 374.8L276.3 380.3L265.5 398L257 406L250.4 410.7L246 420.3L239.6 426L236.9 420.3L241.2 415.5L235.5 408.7L227.9 403.2L217.9 396.7L214.3 397L204.6 389.2L198.3 390.3Z"
+              stroke="#35D07F" stroke-opacity=".35" stroke-width="1" stroke-linejoin="round"/>
+
+        <!-- arcos da sede (Uberlândia) até as capitais -->
+        <g stroke="#35D07F" stroke-opacity=".26" stroke-width=".9">
+          <path d="M289 276.8Q257.4 179.2 175 118"/>
+          <path d="M289 276.8Q316 188.7 286.8 101.3"/>
+          <path d="M289 276.8Q360.7 215.5 383.5 124"/>
+          <path d="M289 276.8Q371.5 243 419.1 167.6"/>
+          <path d="M289 276.8Q346 262.1 383.9 217.1"/>
+          <path d="M289 276.8Q296 261.7 292.9 245.4"/>
+          <path d="M289 276.8Q256.4 248 213.1 243.5"/>
+          <path d="M289 276.8Q229.5 201.5 137.4 174.7"/>
+          <path d="M289 276.8Q289.6 302.6 305 323.3"/>
+          <path d="M289 276.8Q307.4 304.8 338.6 316.9"/>
+          <path d="M289 276.8Q273.7 308 279.4 342.2"/>
+          <path d="M289 276.8Q256.9 328.1 260.5 388.5"/>
+        </g>
+
+        <!-- sinais percorrendo os arcos -->
+        <g fill="#9ff5c4">
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="3.4s" begin="0s" repeatCount="indefinite" path="M289 276.8Q257.4 179.2 175 118"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="3s" begin=".8s" repeatCount="indefinite" path="M289 276.8Q360.7 215.5 383.5 124"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="3s" begin=".8s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M289 276.8Q371.5 243 419.1 167.6"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="3.2s" begin="1.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="2.9s" begin=".4s" repeatCount="indefinite" path="M289 276.8Q256.9 328.1 260.5 388.5"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="2.9s" begin=".4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="3.6s" begin="2.2s" repeatCount="indefinite" path="M289 276.8Q229.5 201.5 137.4 174.7"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="3.6s" begin="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="1.7" opacity="0">
+            <animateMotion dur="3.1s" begin="1.2s" repeatCount="indefinite" path="M289 276.8Q316 188.7 286.8 101.3"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.12;.85;1" dur="3.1s" begin="1.2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- halos das capitais -->
+        <g fill="#35D07F" fill-opacity=".13">
+          <circle cx="175" cy="118" r="6"/>
+          <circle cx="286.8" cy="101.3" r="6"/>
+          <circle cx="383.5" cy="124" r="6"/>
+          <circle cx="419.1" cy="167.6" r="6"/>
+          <circle cx="383.9" cy="217.1" r="6"/>
+          <circle cx="292.9" cy="245.4" r="6"/>
+          <circle cx="213.1" cy="243.5" r="6"/>
+          <circle cx="137.4" cy="174.7" r="6"/>
+          <circle cx="305" cy="323.3" r="6"/>
+          <circle cx="338.6" cy="316.9" r="6"/>
+          <circle cx="279.4" cy="342.2" r="6"/>
+          <circle cx="260.5" cy="388.5" r="6"/>
+        </g>
+        <!-- nós das capitais -->
+        <g fill="url(#node)">
+          <circle cx="175" cy="118" r="2.5"/>
+          <circle cx="286.8" cy="101.3" r="2.5"/>
+          <circle cx="383.5" cy="124" r="2.5"/>
+          <circle cx="419.1" cy="167.6" r="2.5"/>
+          <circle cx="383.9" cy="217.1" r="2.5"/>
+          <circle cx="292.9" cy="245.4" r="2.5"/>
+          <circle cx="213.1" cy="243.5" r="2.5"/>
+          <circle cx="137.4" cy="174.7" r="2.5"/>
+          <circle cx="305" cy="323.3" r="2.5"/>
+          <circle cx="338.6" cy="316.9" r="2.5"/>
+          <circle cx="279.4" cy="342.2" r="2.5"/>
+          <circle cx="260.5" cy="388.5" r="2.5"/>
+        </g>
+
+        <!-- pings escalonados em capitais -->
+        <g stroke="#35D07F" fill="none" stroke-width="1">
+          <circle cx="383.5" cy="124" r="2.5">
+            <animate attributeName="r" values="2.5;13" dur="2.8s" begin=".9s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".75;0" dur="2.8s" begin=".9s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="260.5" cy="388.5" r="2.5">
+            <animate attributeName="r" values="2.5;13" dur="2.8s" begin="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".75;0" dur="2.8s" begin="2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- sede: Uberlândia/MG -->
+        <g transform="translate(289,276.8)">
+          <circle r="5.2" fill="url(#node)"/>
+          <circle r="5.2" fill="none" stroke="#35D07F" stroke-width="1.2">
+            <animate attributeName="r" values="5.2;24" dur="2.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".85;0" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="5.2" fill="none" stroke="#35D07F" stroke-width="1">
+            <animate attributeName="r" values="5.2;24" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".55;0" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- norte + escala gráfica (500 km ≈ 45 px nesta projeção) -->
+        <g stroke="#35D07F" stroke-opacity=".7">
+          <line x1="433" y1="40" x2="433" y2="20" stroke-width="1"/>
+          <polygon points="433,14 428.5,23 437.5,23" fill="#35D07F" stroke="none" fill-opacity=".85"/>
+        </g>
+        <text x="433" y="54" text-anchor="middle" font-size="9" fill="#8f9d94" fill-opacity=".9">N</text>
+        <g stroke="#35D07F" stroke-opacity=".55" stroke-width="1">
+          <path d="M366 434v-5M411.2 434v-5M366 432h45.2"/>
+        </g>
+        <g fill="#8f9d94" fill-opacity=".8" font-size="7.5">
+          <text x="366" y="446" text-anchor="middle">0</text>
+          <text x="411" y="446" text-anchor="middle">500 km</text>
+        </g>
+        <text x="389" y="457" text-anchor="middle" font-size="6.5" fill="#8f9d94" fill-opacity=".55" letter-spacing=".12em">SIRGAS 2000 · UTM 22K</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA FINAL ============================ -->
+<section class="final-cta" id="contato">
+  <!-- perfil longitudinal do terreno: pontos cotados e estacas de 20 m -->
+  <svg class="cta-profile" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif">
+    <defs>
+      <linearGradient id="prof" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#35D07F" stop-opacity=".10"/>
+        <stop offset="100%" stop-color="#35D07F" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g stroke="#35D07F" stroke-opacity=".08">
+      <line x1="120" y1="34" x2="120" y2="240"/>
+      <line x1="360" y1="34" x2="360" y2="240"/>
+      <line x1="600" y1="34" x2="600" y2="240"/>
+      <line x1="840" y1="34" x2="840" y2="240"/>
+      <line x1="1080" y1="34" x2="1080" y2="240"/>
+    </g>
+    <g stroke="#35D07F" stroke-opacity=".09" stroke-dasharray="2 7">
+      <line x1="0" y1="92" x2="1200" y2="92"/>
+      <line x1="0" y1="162" x2="1200" y2="162"/>
+    </g>
+    <path d="M0 196C90 188 150 158 240 152C330 146 380 176 470 170C560 164 610 112 700 104C790 96 830 138 920 142C1010 146 1060 100 1140 92L1200 88V240H0Z" fill="url(#prof)"/>
+    <path d="M0 196C90 188 150 158 240 152C330 146 380 176 470 170C560 164 610 112 700 104C790 96 830 138 920 142C1010 146 1060 100 1140 92L1200 88" stroke="#35D07F" stroke-opacity=".4" stroke-width="1.4"/>
+    <g fill="#35D07F" fill-opacity=".8">
+      <circle cx="240" cy="152" r="2.4"/>
+      <circle cx="700" cy="104" r="2.4"/>
+      <circle cx="1140" cy="92" r="2.4"/>
+    </g>
+    <g fill="#8f9d94" fill-opacity=".75" font-size="10">
+      <text x="240" y="137" text-anchor="middle">861,9</text>
+      <text x="700" y="89" text-anchor="middle">866,4</text>
+      <text x="1140" y="77" text-anchor="middle">869,7</text>
+    </g>
+    <g fill="#8f9d94" fill-opacity=".45" font-size="9">
+      <text x="120" y="232" text-anchor="middle">E0</text>
+      <text x="360" y="232" text-anchor="middle">E12</text>
+      <text x="600" y="232" text-anchor="middle">E24</text>
+      <text x="840" y="232" text-anchor="middle">E36</text>
+      <text x="1080" y="232" text-anchor="middle">E48</text>
+    </g>
+  </svg>
+  <div class="wrap inner reveal">
+    <h2>Tem uma área para medir ou regularizar?</h2>
+    <ol class="cta-steps">
+      <li><b>01</b>Você descreve a área</li>
+      <li><b>02</b>Proposta com escopo e prazo</li>
+      <li><b>03</b>Equipe em campo</li>
+      <li><b>04</b>Entrega documentada</li>
+    </ol>
+    <a class="btn-wa" href="https://wa.me/5534997323133?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%20topografia." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.2-.8 1-.9 1.1-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.9 6.5c-.2-.5-.4-.5-.6-.5h-.6a1 1 0 0 0-.8.4A3.2 3.2 0 0 0 5.8 8.7c0 1.4 1 2.7 1.2 2.9s2 3.1 4.9 4.3c2.5 1 2.6.7 3 .7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ============================ RODAPÉ ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="logo-light.png" alt="G&J Brasil Topografia">
+        <p>Topografia, georreferenciamento, regularização fundiária e obras civis em todo o Brasil.</p>
+      </div>
+
+      <div class="foot-links">
+        <a href="https://wa.me/5534997323133?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%20topografia." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.2-.8 1-.9 1.1-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.9 6.5c-.2-.5-.4-.5-.6-.5h-.6a1 1 0 0 0-.8.4A3.2 3.2 0 0 0 5.8 8.7c0 1.4 1 2.7 1.2 2.9s2 3.1 4.9 4.3c2.5 1 2.6.7 3 .7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+          WhatsApp · (34) 99732-3133
+        </a>
+        <a href="https://instagram.com/gjbrasiltopografia" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @gjbrasiltopografia
+        </a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>G&amp;J Brasil Topografia LTDA · CNPJ 59.294.847/0001-79</span>
+      <span>© <span id="ano"></span> · Uberlândia · MG</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ CTA FLUTUANTE ============================ -->
+<a class="wa-float" href="https://wa.me/5534997323133?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20gostaria%20de%20um%20or%C3%A7amento%20de%20topografia." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.2-.8 1-.9 1.1-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.9 6.5c-.2-.5-.4-.5-.6-.5h-.6a1 1 0 0 0-.8.4A3.2 3.2 0 0 0 5.8 8.7c0 1.4 1 2.7 1.2 2.9s2 3.1 4.9 4.3c2.5 1 2.6.7 3 .7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+</a>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  // trena: progresso de leitura
+  (function(){
+    var g = document.querySelector('.gauge i');
+    var ticking = false;
+    function update(){
+      var h = document.documentElement;
+      var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+      g.style.width = (p * 100) + '%';
+      ticking = false;
+    }
+    addEventListener('scroll', function(){
+      if (!ticking){ ticking = true; requestAnimationFrame(update); }
+    }, {passive:true});
+    update();
+  })();
+  // respeita prefers-reduced-motion também nas animações SMIL do mapa
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('animate, animateMotion').forEach(function(a){ a.remove(); });
+  }
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+
+<!-- ==========================================================================
+     STATUS DOS DADOS
+     --------------------------------------------------------------------------
+     LOGO       ✅ logo-light.png (header/rodapé). logo.png = versão colorida.
+     INSTAGRAM  ✅ @gjbrasiltopografia
+     CNPJ       ✅ 59.294.847/0001-79
+     WHATSAPP   ✅ 5534997323133 · mensagem pré-preenchida do Instagram.
+                   Ajuste o número exibido "(34) 99732-3133" se for diferente.
+                   Arquitetura de conversão: hero ("Solicitar orçamento"),
+                   CTA final ("Falar no WhatsApp"), botão flutuante (ícone)
+                   e contato no rodapé. Header aponta para o Instagram.
+     MAPA       ✅ gerado de GeoJSON real; capitais em posição geográfica exata.
+     FOTOS      ✅ hero-bg.jpg (aérea, fundo do hero) · mosaico na seção
+                   "Por que": foto-campo.jpg + obra-2.jpg + obra-3.jpg.
+                   obra-1.jpg ficou na pasta sem uso (cena repetida).
+                   Originais intactos. IMG_1300 NÃO usada: placa de
+                   veículo legível (privacidade).
+     NÚMEROS    ✅ "+30 anos de topografia" na faixa do hero (confirmado).
+     ========================================================================== -->
+</body>
+</html>
