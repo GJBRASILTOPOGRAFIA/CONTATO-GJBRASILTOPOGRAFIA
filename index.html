@@ -6,6 +6,7 @@
 <title>G&J Brasil Topografia — Levantamentos, Georreferenciamento e Topografia de Obras</title>
 <meta name="description" content="Topografia com rigor técnico em todo o Brasil: levantamentos planialtimétricos, georreferenciamento SIGEF/INCRA, regularização fundiária e topografia de obras civis.">
 <meta name="theme-color" content="#0b0d0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230b0d0c'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='9.5'%20fill='none'%20stroke='%2335D07F'%20stroke-width='1.5'/%3E%3Cpath%20d='M16%205.5v21M5.5%2016h21'%20stroke='%2335D07F'%20stroke-width='1.1'/%3E%3Cpolygon%20points='16%207.5%2018.4%2016%2016%2013.7%2013.6%2016'%20fill='%2335D07F'/%3E%3Cpolygon%20points='16%2024.5%2013.6%2016%2016%2018.3%2018.4%2016'%20fill='%2335D07F'%20fill-opacity='.35'/%3E%3C/svg%3E">
 
 <meta property="og:title" content="G&J Brasil Topografia">
 <meta property="og:description" content="Topografia de precisão em todo o Brasil — do georreferenciamento à obra civil.">
@@ -140,6 +141,9 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
 .hero-strip .item:last-child{border-right:0;margin-right:0;padding-right:0}
 .hero-strip .num{font-family:var(--font-display);font-weight:600;font-size:1.35rem;color:#fff;letter-spacing:-.01em}
 .hero-strip .lbl{font-size:.8rem;color:var(--text-invert-muted);letter-spacing:.04em;font-weight:300}
+.hero-strip .item--solo{border-right:0;margin-right:0;padding-right:0;gap:2px}
+.hero-strip .item--solo .num{font-size:clamp(2rem,4.4vw,2.7rem)}
+.hero-strip .item--solo .lbl{font-size:.92rem;letter-spacing:.02em}
 @media(max-width:600px){
   .hero-strip{gap:20px 0}
   .hero-strip .item{border-right:0;margin-right:0;padding-right:24px;flex:0 0 46%}
@@ -184,41 +188,36 @@ section{scroll-margin-top:84px}
 .svc p{font-size:.95rem;color:var(--text-muted);font-weight:300}
 .svc-idx{position:absolute;top:26px;right:30px;font-family:var(--font-display);font-size:.78rem;color:#c9d3cd;font-weight:500;letter-spacing:.05em}
 
-/* ---- Diferenciais ---- */
-.why{background:var(--ink);color:var(--text-invert);position:relative;overflow:hidden}
-.why::before{
-  content:"";position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(53,208,127,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(53,208,127,.045) 1px,transparent 1px);
-  background-size:52px 52px;
-  mask-image:radial-gradient(100% 80% at 18% 0%,#000 18%,transparent 76%);
-  -webkit-mask-image:radial-gradient(100% 80% at 18% 0%,#000 18%,transparent 76%);
+/* ---- Por que a G&J — faixa full-bleed com foto de campo ---- */
+.why{position:relative;overflow:hidden;color:var(--text-invert);background:var(--ink);isolation:isolate}
+.why-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 60%;z-index:0}
+.why::before{ /* legibilidade + clima sobre a foto */
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to bottom,
+      rgba(8,10,9,.95) 0%, rgba(8,10,9,.74) 26%,
+      rgba(8,10,9,.72) 50%, rgba(8,10,9,.97) 100%),
+    linear-gradient(105deg, rgba(8,10,9,.5) 0%, transparent 55%);
 }
-.why .section-head h2{color:#fff}
-.why .section-head p{color:var(--text-invert-muted)}
-.why-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2}
-@media(max-width:860px){.why-inner{grid-template-columns:1fr;gap:38px}}
-/* mosaico de campo — evidência real ao lado dos diferenciais */
-.why-photos{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:1fr 1fr;gap:14px}
-.why-photos figure{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--hair-dark);box-shadow:var(--shadow)}
-.why-photos img{width:100%;height:100%;object-fit:cover;display:block}
-.wp-main{grid-row:1/3;aspect-ratio:4/5}
-.wp-main img{object-position:50% 68%}
-.why-photos figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,13,12,.55),transparent 45%)}
-.wp-sub .ph-chip{font-size:.58rem;left:14px;bottom:11px;letter-spacing:.14em}
-.ph-chip{position:absolute;left:18px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#dce8e1;font-weight:500}
-.ph-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--emerald)}
-.ph-tick{position:absolute;z-index:2;width:18px;height:18px;border:1px solid rgba(53,208,127,.55)}
-.ph-tick.tl{top:14px;left:14px;border-right:0;border-bottom:0}
-.ph-tick.br{bottom:14px;right:14px;border-left:0;border-top:0}
-.why-list{display:flex;flex-direction:column}
-.why-card{padding:28px 0;border-bottom:1px solid var(--hair-dark)}
-.why-card:first-child{padding-top:0}
-.why-card:last-child{border-bottom:0;padding-bottom:0}
-.why-num{font-family:var(--font-display);font-weight:600;color:var(--emerald);font-size:.82rem;letter-spacing:.14em;margin-bottom:18px}
-.why-card h3{font-size:1.28rem;margin-bottom:11px;color:#fff;font-weight:600}
-.why-card p{color:var(--text-invert-muted);font-size:.97rem;font-weight:300}
+.why > .wrap{position:relative;z-index:2}
+.why .section-head{margin-bottom:0}
+.why .section-head h2{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.why .section-head p{color:#d3ddd6}
+.why-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  margin-top:clamp(150px,26vh,300px);border-top:1px solid rgba(255,255,255,.16)}
+.why-grid3 .why-card{padding:30px 34px 0 0;border-right:1px solid rgba(255,255,255,.16)}
+.why-grid3 .why-card:last-child{border-right:0;padding-right:0}
+@media(max-width:760px){
+  .why-grid3{grid-template-columns:1fr;margin-top:clamp(120px,44vh,360px)}
+  .why-grid3 .why-card{border-right:0;border-top:1px solid rgba(255,255,255,.14);padding:26px 0 0}
+  .why-grid3 .why-card:first-child{border-top:0}
+}
+.why-kicker{display:inline-flex;align-items:baseline;gap:11px;margin-bottom:15px;
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.74rem;color:var(--emerald)}
+.why-kicker b{font-size:1.6rem;line-height:1;font-weight:600;color:#fff;letter-spacing:0}
+.why-card h3{font-size:1.24rem;margin-bottom:10px;color:#fff;font-weight:600}
+.why-card p{color:#b9c4bc;font-size:.96rem;font-weight:300}
 
 /* ---- Atuação nacional — o mapa é o fundo da seção (carta em papel) ---- */
 .reach{background:var(--paper);position:relative;overflow:hidden}
@@ -395,12 +394,9 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
     </div>
 
     <div class="hero-strip">
-      <div class="item"><span class="num">+30 anos</span><span class="lbl">de topografia</span></div>
-      <div class="item"><span class="num">SIGEF / INCRA</span><span class="lbl">Certificação de imóveis</span></div>
-      <div class="item"><span class="num">GNSS · RTK</span><span class="lbl">Medição geodésica</span></div>
-      <div class="item"><span class="num">ART · RT</span><span class="lbl">Responsabilidade técnica</span></div>
+      <div class="item item--solo"><span class="num">+30 anos</span><span class="lbl">de topografia em todo o Brasil</span></div>
     </div>
-    <div class="hero-coords">Lat 18°55′07″ S &nbsp;·&nbsp; Lon 48°16′38″ O &nbsp;·&nbsp; Alt 863 m</div>
+    <div class="hero-coords">Lat 18°55′07″ S&ensp;·&ensp;Lon 48°16′38″ O&ensp;·&ensp;Alt 863 m</div>
   </div>
 </section>
 
@@ -427,48 +423,66 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
     <div class="section-head reveal">
       <span class="eyebrow">Serviços</span>
       <h2>Soluções completas em topografia</h2>
-      <p>Seis frentes de trabalho — do meio rural à infraestrutura urbana.</p>
+      <p>Seis frentes de trabalho, do meio rural à infraestrutura urbana.</p>
     </div>
 
     <div class="svc-grid">
       <article class="svc reveal">
         <span class="svc-idx">01</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- estação total sobre tripé -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="3" width="7" height="4.6" rx="1"/><path d="M15.5 5.3h2.3"/><path d="M12 7.6v3.1"/><path d="M12 10.7 5.4 21M12 10.7 18.6 21M12 10.7v6.3"/></svg>
+        </div>
         <h3>Levantamentos planialtimétricos</h3>
         <p>Medição de relevo, curvas de nível e edificações para projeto, execução ou perícia.</p>
       </article>
 
       <article class="svc reveal">
         <span class="svc-idx">02</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- vértices de imóvel georreferenciado -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 7.5 12 4l7 3.2v8.6L11.5 20 5 16.6z"/><circle cx="5" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="7.7" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="16.3" r="1.5" fill="currentColor" stroke="none"/><circle cx="11.5" cy="20" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="16.6" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </div>
         <h3>Georreferenciamento rural</h3>
         <p>Demarcação e certificação de imóveis rurais junto ao INCRA.</p>
       </article>
 
       <article class="svc reveal">
         <span class="svc-idx">03</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- matrícula com carimbo aprovado -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13.5l2 2 4-4.5"/></svg>
+        </div>
         <h3>Retificação e regularização</h3>
         <p>Correção de área, retificação de matrícula e regularização fundiária levadas ao cartório.</p>
       </article>
 
       <article class="svc reveal">
         <span class="svc-idx">04</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- quadras e lotes -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.2"/><path d="M3 12h18M11 4v8M16 4v8M8 12v8M14 12v8"/></svg>
+        </div>
         <h3>Loteamento e parcelamento</h3>
         <p>Projetos de loteamento e desmembramento do solo prontos para aprovação municipal.</p>
       </article>
 
       <article class="svc reveal">
         <span class="svc-idx">05</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- edificação com visada de nível -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V9.5l6.5-4 5.5 3.4"/><path d="M9.5 21v-4.5h5V21"/><circle cx="17.5" cy="6.5" r="2.6"/><path d="M17.5 3.4v6.2M14.4 6.5h6.2"/></svg>
+        </div>
         <h3>Topografia de obras civis</h3>
         <p>Locação de obra, controle de eixos e níveis, monitoramento de recalques e as-built.</p>
       </article>
 
       <article class="svc reveal">
         <span class="svc-idx">06</span>
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12h4l3 8 6-16 3 8h4"/></svg></div>
+        <div class="svc-ico" aria-hidden="true">
+          <!-- modelo digital de terreno (malha triangular) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15l6.5-4.2 5 3 8.5-5.6"/><path d="M2 20l6.5-4.2 5 3 8.5-5.6"/><path d="M8.5 10.8v5M13.5 13.8v5"/></svg>
+        </div>
         <h3>Projetos em Civil 3D</h3>
         <p>Modelagem de terreno, greides e volumes de corte/aterro com pranchas técnicas.</p>
       </article>
@@ -478,68 +492,31 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
 
 <!-- ============================ POR QUE A G&J ============================ -->
 <section class="why section-pad" id="diferenciais">
-  <!-- graduação de mira estadimétrica (padrão "E" das réguas de nivelamento) -->
-  <svg class="mira" viewBox="0 0 34 440" fill="currentColor" aria-hidden="true">
-    <defs>
-      <pattern id="miraE" width="20" height="40" patternUnits="userSpaceOnUse">
-        <path d="M0 0h14v4H4v4h10v4H4v4h10v4H0z"/>
-        <path d="M20 20H6v4h10v4H6v4h10v4H6v4h14z"/>
-      </pattern>
-    </defs>
-    <rect width="20" height="440" fill="url(#miraE)"/>
-    <g font-family="'Space Grotesk',system-ui,sans-serif" font-size="9" font-weight="600">
-      <text x="24" y="12">30</text>
-      <text x="24" y="92">29</text>
-      <text x="24" y="172">28</text>
-      <text x="24" y="252">27</text>
-      <text x="24" y="332">26</text>
-      <text x="24" y="412">25</text>
-    </g>
-  </svg>
+  <img class="why-bg" src="foto-campo.jpg" alt="Topógrafo da G&J Brasil operando estação total em levantamento de campo" loading="lazy">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow on-dark">Por que a G&amp;J</span>
       <h2>O padrão técnico que a sua documentação exige</h2>
-      <p>Uma equipe que domina a medição e a burocracia — e entrega as duas resolvidas.</p>
+      <p>Uma equipe que domina a medição e a burocracia, e entrega as duas resolvidas.</p>
     </div>
 
-    <div class="why-inner">
-      <div class="why-photos reveal">
-        <figure class="wp-main">
-          <img src="foto-campo.jpg" alt="Topógrafo da G&J Brasil operando estação total em levantamento de campo" loading="lazy">
-          <span class="ph-tick tl" aria-hidden="true"></span>
-          <span class="ph-tick br" aria-hidden="true"></span>
-          <figcaption class="ph-chip">Levantamento em campo</figcaption>
-        </figure>
-        <figure class="wp-sub">
-          <img src="obra-2.jpg" alt="Topógrafo com receptor GNSS em planta industrial" loading="lazy">
-          <figcaption class="ph-chip">Planta industrial</figcaption>
-        </figure>
-        <figure class="wp-sub">
-          <img src="obra-3.jpg" alt="Estação total sobre tripé em canteiro de obras" loading="lazy">
-          <figcaption class="ph-chip">Locação de obra</figcaption>
-        </figure>
+    <div class="why-grid3">
+      <div class="why-card reveal">
+        <span class="why-kicker"><b>01</b>Precisão</span>
+        <h3>Dados que passam na validação</h3>
+        <p>GNSS RTK e estação total. Dados que o SIGEF e o cartório aceitam de primeira.</p>
       </div>
-
-      <div class="why-list">
-        <div class="why-card reveal">
-          <div class="why-num">01 — PRECISÃO</div>
-          <h3>Dados que passam na validação</h3>
-          <p>GNSS RTK e estação total — dados que o SIGEF e o cartório aceitam de primeira.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-num">02 — PRAZO</div>
-          <h3>Cronograma que se cumpre</h3>
-          <p>Etapas e datas definidas no início e respeitadas do começo ao fim, sem surpresas.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-num">03 — CONFORMIDADE</div>
-          <h3>Regularidade garantida</h3>
-          <p>Responsável técnico e ART, em conformidade com INCRA, cartórios e prefeituras.</p>
-        </div>
+      <div class="why-card reveal">
+        <span class="why-kicker"><b>02</b>Prazo</span>
+        <h3>Cronograma que se cumpre</h3>
+        <p>Etapas e datas definidas no início e respeitadas do começo ao fim, sem surpresas.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-kicker"><b>03</b>Conformidade</span>
+        <h3>Regularidade garantida</h3>
+        <p>Responsável técnico e ART, em conformidade com INCRA, cartórios e prefeituras.</p>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -549,7 +526,7 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
     <div class="reach-copy reveal">
       <span class="eyebrow">Onde atuamos</span>
       <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin:16px 0 0;font-weight:600">Atuação em todo o Brasil</h2>
-      <p class="lead">Sede em Uberlândia e equipes em deslocamento para qualquer estado — da fazenda ao grande empreendimento urbano.</p>
+      <p class="lead">Sede em Uberlândia e equipes em deslocamento para qualquer estado, da fazenda ao grande empreendimento urbano.</p>
       <ul class="reach-tags">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Proprietários rurais</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Incorporadoras</li>
@@ -560,11 +537,11 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:60px 0 36px}
 
       <!-- legenda técnica da carta -->
       <div class="reach-legend reveal">
-        <span><i class="lg-mark" aria-hidden="true"></i>Sede — 18°55′S · 48°17′O</span>
+        <span><i class="lg-mark" aria-hidden="true"></i>Sede · 18°55′S · 48°17′O</span>
         <span>Datum SIRGAS 2000 · Fuso UTM 22K</span>
         <span aria-label="Escala gráfica: 500 quilômetros">
           <svg width="74" height="11" viewBox="0 0 74 11" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 9V2M37 9V5M73 9V2M1 8h72"/></svg>
-          0 — 500 km
+          0 a 500 km
         </span>
       </div>
     </div>
