@@ -216,12 +216,14 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
   .hero-strip .item--solo .num{font-size:clamp(2.2rem,10vw,2.9rem)}
   .hero-strip .item--solo .lbl{font-size:.88rem;padding-left:18px;max-width:170px}
 }
-/* leitura de estação: coordenadas reais da sede */
+/* leitura de estação: coordenadas reais da sede — canto sup. dir., sob os contatos */
 .hero-coords{
-  margin-top:28px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  position:absolute;top:22px;right:max(24px,calc(50% - 556px));z-index:3;
+  display:flex;align-items:center;gap:11px;
   font-family:var(--font-display);font-size:.66rem;letter-spacing:.24em;
   color:var(--text-invert-muted);font-weight:500;text-transform:uppercase;
 }
+@media(max-width:820px){.hero-coords{display:none}}
 .hero-coords::before{
   content:"";width:11px;height:11px;border-radius:50%;border:1px solid var(--emerald);flex-shrink:0;
   background:linear-gradient(#35D07F,#35D07F) center/1px 5px no-repeat,
@@ -505,8 +507,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:28px 0}
     <div class="hero-strip">
       <div class="item item--solo"><span class="num">+30<em>anos</em></span><span class="lbl"><b>Experiência</b> em campo e em escritório</span></div>
     </div>
-    <div class="hero-coords">Lat 18°55′07″ S&ensp;·&ensp;Lon 48°16′38″ O&ensp;·&ensp;Alt 863 m</div>
   </div>
+  <div class="hero-coords">Lat 18°55′07″ S&ensp;·&ensp;Lon 48°16′38″ O&ensp;·&ensp;Alt 863 m</div>
 </section>
 
 <!-- ============================ SERVIÇOS ============================ -->
