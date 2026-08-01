@@ -199,8 +199,8 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
 }
 /* divisória fina de instrumento */
 .hero-strip .item--solo .lbl{
-  position:relative;padding-left:23px;max-width:172px;
-  font-size:.92rem;line-height:1.4;letter-spacing:.005em;
+  position:relative;padding-left:26px;max-width:210px;
+  font-size:1.08rem;line-height:1.38;letter-spacing:.005em;
   color:var(--text-invert-muted);font-weight:300;
 }
 .hero-strip .item--solo .lbl::before{
@@ -214,7 +214,7 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
   .hero-strip .item{border-right:0;margin-right:0;padding-right:24px;flex:0 0 46%}
   .hero-strip .item--solo{flex:0 0 auto;gap:18px;padding:15px 22px}
   .hero-strip .item--solo .num{font-size:clamp(2.2rem,10vw,2.9rem)}
-  .hero-strip .item--solo .lbl{font-size:.88rem;padding-left:18px;max-width:170px}
+  .hero-strip .item--solo .lbl{font-size:1rem;padding-left:20px;max-width:190px}
 }
 /* leitura de estação: coordenadas reais da sede — canto sup. dir., sob os contatos */
 .hero-coords{
@@ -413,6 +413,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:28px 0}
 .gauge .reel svg{width:100%;height:100%;display:block}
 /* gira exatamente no eixo do carretel (viewBox coords), incluindo a manivela */
 .gauge .reel .spool{transform-box:view-box;transform-origin:12.4px 17.6px;will-change:transform}
+/* mobile: margem lateral estreita — o carretel encostaria na logo; some só a barra fina */
+@media(max-width:640px){.gauge .reel{display:none}}
 
 /* mira estadimétrica — régua de nivelamento com numeração (telas largas) */
 .mira{display:none;position:absolute;right:34px;top:50%;transform:translateY(-50%);height:340px;width:26px;color:var(--emerald);opacity:.26;z-index:1}
