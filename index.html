@@ -408,10 +408,11 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:28px 0}
   background:var(--emerald);box-shadow:0 0 12px rgba(53,208,127,.85);
 }
 /* carretel da trena ancorado no início — a fita desenrola de trás dele */
-.gauge .reel{position:absolute;top:0;left:2px;width:34px;height:30px;z-index:2;
+.gauge .reel{position:absolute;top:0;left:3px;width:41px;height:36px;z-index:2;
   filter:drop-shadow(0 2px 5px rgba(0,0,0,.6))}
 .gauge .reel svg{width:100%;height:100%;display:block}
-.gauge .reel .spool{transform-box:fill-box;transform-origin:center;will-change:transform}
+/* gira exatamente no eixo do carretel (viewBox coords), incluindo a manivela */
+.gauge .reel .spool{transform-box:view-box;transform-origin:12.4px 17.6px;will-change:transform}
 
 /* mira estadimétrica — régua de nivelamento com numeração (telas largas) */
 .mira{display:none;position:absolute;right:34px;top:50%;transform:translateY(-50%);height:340px;width:26px;color:var(--emerald);opacity:.26;z-index:1}
@@ -447,13 +448,17 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:28px 0}
       <path d="M9.8 7V5.3A1.3 1.3 0 0 1 11.1 4h2.3A1.3 1.3 0 0 1 14.7 5.3V7" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.4"/>
       <!-- clipe de cinto -->
       <path d="M2.3 15v6.4" stroke="#35D07F" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".6"/>
-      <!-- rolo de fita enrolada (gira no scroll) -->
+      <!-- rolo + manivela (gira no scroll) -->
       <g class="spool" fill="none">
         <circle cx="12.4" cy="17.6" r="6.2" stroke="#35D07F" stroke-width="1.4"/>
-        <circle cx="12.4" cy="17.6" r="3.4" stroke="#35D07F" stroke-width="1.2" stroke-opacity=".6"/>
-        <path d="M12.4 11.4a6.2 6.2 0 0 1 5 2.3" stroke="#35D07F" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="12.4" cy="17.6" r="3.2" stroke="#35D07F" stroke-width="1.1" stroke-opacity=".5"/>
+        <!-- manivela: braço + punho que orbita o eixo -->
+        <line x1="12.4" y1="17.6" x2="17.6" y2="17.6" stroke="#35D07F" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="17.6" cy="17.6" r="2" fill="#0b0d0c" stroke="#35D07F" stroke-width="1.4"/>
+        <circle cx="17.6" cy="17.6" r=".7" fill="#35D07F" stroke="none"/>
       </g>
-      <circle cx="12.4" cy="17.6" r="1.5" fill="#35D07F"/>
+      <!-- eixo central fixo -->
+      <circle cx="12.4" cy="17.6" r="1.4" fill="#35D07F"/>
     </svg>
   </span>
 </div>
