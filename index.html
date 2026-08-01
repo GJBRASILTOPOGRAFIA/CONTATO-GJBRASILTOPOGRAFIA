@@ -119,24 +119,38 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.025em
   mask-image:linear-gradient(108deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.6) 32%,#000 100%);
   -webkit-mask-image:linear-gradient(108deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.6) 32%,#000 100%);
 }
-.utm-line{position:absolute;overflow:hidden}
-.utm-line.h{left:0;right:0;height:2px}
-.utm-line.v{top:0;bottom:0;width:2px}
-.utm-run{position:absolute;will-change:left,top}
+/* anchor sem clip: o bloom do cometa não pode ser cortado na faixa fina —
+   o clip nas bordas do hero fica por conta de .hero-scan{overflow:hidden} */
+.utm-line{position:absolute}
+.utm-line.h{left:0;right:0}
+.utm-line.v{top:0;bottom:0}
+.utm-run{position:absolute;opacity:0;will-change:left,top}
+/* HORIZONTAL: rastro que desvanece atrás + cabeça-cometa brilhante à frente */
 .utm-line.h .utm-run{
-  top:0;height:2px;width:230px;left:-230px;
-  background:linear-gradient(90deg,transparent 0%,rgba(53,208,127,.35) 40%,#daffe8 50%,rgba(53,208,127,.35) 60%,transparent 100%);
-  filter:drop-shadow(0 0 6px rgba(53,208,127,.85));
-  animation:utmRunH linear infinite;
+  top:-1.5px;height:3px;width:clamp(170px,20vw,300px);left:-340px;border-radius:3px;
+  background:linear-gradient(90deg,transparent 0%,rgba(53,208,127,.10) 38%,rgba(53,208,127,.4) 72%,rgba(140,244,190,.85) 92%,#f2fff8 100%);
+  filter:drop-shadow(0 0 4px rgba(53,208,127,.55)) drop-shadow(0 0 12px rgba(53,208,127,.32));
+  animation:utmRunH 7s cubic-bezier(.45,0,.55,1) infinite;
 }
+.utm-line.h .utm-run::after{
+  content:"";position:absolute;right:-2px;top:50%;width:6px;height:6px;transform:translateY(-50%);
+  border-radius:50%;background:#f4fff9;
+  box-shadow:0 0 6px 1px rgba(165,255,208,.95),0 0 17px 5px rgba(53,208,127,.5),0 0 30px 10px rgba(53,208,127,.22);
+}
+/* VERTICAL */
 .utm-line.v .utm-run{
-  left:0;width:2px;height:230px;top:-230px;
-  background:linear-gradient(180deg,transparent 0%,rgba(53,208,127,.35) 40%,#daffe8 50%,rgba(53,208,127,.35) 60%,transparent 100%);
-  filter:drop-shadow(0 0 6px rgba(53,208,127,.85));
-  animation:utmRunV linear infinite;
+  left:-1.5px;width:3px;height:clamp(150px,18vw,280px);top:-320px;border-radius:3px;
+  background:linear-gradient(180deg,transparent 0%,rgba(53,208,127,.10) 38%,rgba(53,208,127,.4) 72%,rgba(140,244,190,.85) 92%,#f2fff8 100%);
+  filter:drop-shadow(0 0 4px rgba(53,208,127,.55)) drop-shadow(0 0 12px rgba(53,208,127,.32));
+  animation:utmRunV 7s cubic-bezier(.45,0,.55,1) infinite;
 }
-@keyframes utmRunH{from{left:-230px}to{left:100%}}
-@keyframes utmRunV{from{top:-230px}to{top:100%}}
+.utm-line.v .utm-run::after{
+  content:"";position:absolute;bottom:-2px;left:50%;width:6px;height:6px;transform:translateX(-50%);
+  border-radius:50%;background:#f4fff9;
+  box-shadow:0 0 6px 1px rgba(165,255,208,.95),0 0 17px 5px rgba(53,208,127,.5),0 0 30px 10px rgba(53,208,127,.22);
+}
+@keyframes utmRunH{0%{left:-340px;opacity:0}9%{opacity:1}84%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes utmRunV{0%{top:-320px;opacity:0}9%{opacity:1}84%{opacity:1}100%{top:100%;opacity:0}}
 
 .hero-inner{position:relative;z-index:2;max-width:760px}
 .hero h1{font-size:clamp(2.3rem,6.2vw,3.9rem);margin:24px 0 20px;color:#fff;font-weight:600}
@@ -909,8 +923,8 @@ footer{background:var(--ink);color:var(--text-invert-muted);padding:28px 0}
         if(cls === 'h') line.style.top = pos + 'px'; else line.style.left = pos + 'px';
         var run = document.createElement('div');
         run.className = 'utm-run';
-        run.style.animationDuration = (5.5 + (i % 4) * 1.3) + 's';
-        run.style.animationDelay = (i * 1.7) + 's';
+        run.style.animationDuration = (6.8 + (i % 4) * 1.7) + 's';
+        run.style.animationDelay = (i * 2.15) + 's';
         line.appendChild(run);
         scan.appendChild(line);
         i++;
